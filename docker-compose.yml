@@ -1,0 +1,41 @@
+services:
+  app:
+    container_name: cline-demo
+    build:
+      context: .
+    working_dir: /app
+    command: ./scripts/docker.entrypoint.sh
+    environment:
+      TZ: America/Lima
+      NODE_ENV: development
+      NODE_PORT: 3000
+      LOG_LEVEL: DEBUG
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: devuser
+      DB_PASSWORD: devpassword
+      DB_NAME: cline-demo-db
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+  db:
+    container_name: cline-demo-db
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: cline-demo-db
+      MYSQL_USER: devuser
+      MYSQL_PASSWORD: devpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+
+volumes:
+  db-data:
