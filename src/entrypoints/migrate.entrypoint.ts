@@ -1,13 +1,14 @@
-import 'dotenv/config';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 import { Migrator, Kysely } from 'kysely';
 
 import { LoggerClient } from 'src/clients/logger/logger.client';
-import { Database, MysqlClient } from 'src/clients/mysql/mysql.client';
+import { Database, SqliteClient } from 'src/clients/sqlite/sqlite.client';
 import { MigrationLoader } from 'src/migrations/migrations.loader';
 
 export class Migrate {
-  private static readonly db: Kysely<Database> = MysqlClient.instance.getDb();
+  private static readonly db: Kysely<Database> = SqliteClient.instance.getDb();
   private static readonly logger: LoggerClient = LoggerClient.instance;
   private static readonly migrationLoader: MigrationLoader = new MigrationLoader();
 

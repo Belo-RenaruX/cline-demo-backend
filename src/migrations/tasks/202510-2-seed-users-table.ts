@@ -1,6 +1,6 @@
 import { Insertable, Kysely } from 'kysely';
 
-import { Database } from 'src/clients/mysql/mysql.client';
+import { Database } from 'src/clients/sqlite/sqlite.client';
 
 const tableName = 'Users';
 

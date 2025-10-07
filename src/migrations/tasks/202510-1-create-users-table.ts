@@ -1,13 +1,13 @@
 import { Kysely, sql } from 'kysely';
 
-import { Database } from 'src/clients/mysql/mysql.client';
+import { Database } from 'src/clients/sqlite/sqlite.client';
 
 const tableName = 'Users';
 
 export async function up(db: Kysely<Database>): Promise<void> {
   await db.schema
     .createTable(tableName)
-    .addColumn('id', 'bigint', (col) => col.primaryKey().autoIncrement())
+    .addColumn('id', 'integer', (col) => col.primaryKey().autoIncrement())
     .addColumn('username', 'varchar(255)', (col) => col.notNull())
     .addColumn('firstName', 'varchar(255)', (col) => col.notNull())
     .addColumn('lastName', 'varchar(255)', (col) => col.notNull())
@@ -16,12 +16,11 @@ export async function up(db: Kysely<Database>): Promise<void> {
     .addColumn('updatedAt', 'datetime', (col) =>
       col
         .notNull()
-        .defaultTo(sql`CURRENT_TIMESTAMP`)
-        .modifyEnd(sql`ON UPDATE CURRENT_TIMESTAMP`),
+        .defaultTo(sql`CURRENT_TIMESTAMP`),
     )
     .execute();
 
-  await db.schema.createIndex('IndexUsermame').on(tableName).column('username').unique().execute();
+  await db.schema.createIndex('IndexUsername').on(tableName).column('username').unique().execute();
   await db.schema.createIndex('IndexPassword').on(tableName).column('password').execute();
 }
 

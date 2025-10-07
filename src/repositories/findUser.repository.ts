@@ -1,4 +1,4 @@
-import { MysqlClient } from 'src/clients/mysql/mysql.client';
+import { SqliteClient } from 'src/clients/sqlite/sqlite.client';
 import { UserDM } from 'src/entities/dms/user.dm';
 import { UserDTO } from 'src/entities/dtos/user/user.dto';
 
@@ -8,7 +8,7 @@ export interface IFindUserRepository {
 
 export class FindUserRepository implements IFindUserRepository {
   async execute(username: UserDM['username']): Promise<UserDTO | undefined> {
-    const db = MysqlClient.instance.getDb();
+    const db = SqliteClient.instance.getDb();
     const result = await db
       .selectFrom('Users')
       .select(['id', 'firstName', 'lastName', 'password', 'createdAt'])
