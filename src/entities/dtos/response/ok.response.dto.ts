@@ -14,10 +14,6 @@ export const OkResponseDTOSchema = z
       description: 'HTTP status code for the success response',
       example: StatusCode.OK,
     }),
-    statusMessage: z.literal(StatusMessage.OK).openapi({
-      description: 'Textual description of the status.',
-      example: StatusMessage.OK,
-    }),
   })
   .strict();
 

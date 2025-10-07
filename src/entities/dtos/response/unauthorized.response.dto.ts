@@ -22,10 +22,6 @@ export const UnauthorizedResponseDTOSchema = z
       description: 'Raw internal error message intended for the developer.',
       example: 'Generic error',
     }),
-    detail: z.string().openapi({
-      description: 'Detailed explanation of the error intentend for the consumer.',
-      example: 'User with ID 123 does not exist.',
-    }),
   })
   .strict();
 

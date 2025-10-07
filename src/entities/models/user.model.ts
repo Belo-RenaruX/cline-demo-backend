@@ -32,7 +32,7 @@ export class UserModel extends BaseModel {
   
   isValidUser(): this {
     if(!this.id) {
-      ErrorModel.notFound({ message: 'User not found' });
+      throw ErrorModel.notFound({ message: 'User not found' });
     }
 
     return this;
@@ -40,7 +40,7 @@ export class UserModel extends BaseModel {
 
   hasValidPassword(password: string): this {
     if(this.password !== password) {
-      ErrorModel.notFound({ message: 'Incorrect password' });
+      throw ErrorModel.badRequest({ message: 'Incorrect password' });
     }
 
     return this;

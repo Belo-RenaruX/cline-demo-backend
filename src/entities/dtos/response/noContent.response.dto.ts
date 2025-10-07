@@ -14,10 +14,6 @@ export const NoContentResponseDTOSchema = z
       description: 'HTTP status code for the success response',
       example: StatusCode.NO_CONTENT,
     }),
-    statusMessage: z.literal(StatusMessage.NO_CONTENT).openapi({
-      description: 'Textual description of the status.',
-      example: StatusMessage.NO_CONTENT,
-    }),
   })
   .strict();
 
