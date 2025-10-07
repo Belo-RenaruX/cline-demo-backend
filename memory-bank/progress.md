@@ -19,6 +19,7 @@
 - ✅ Environment variable management
 - ✅ Logging with Pino
 - ✅ Type-safe database queries with Kysely
+- ✅ Cross-platform environment setup script
 
 ### Project Structure
 - ✅ Feature-based organization

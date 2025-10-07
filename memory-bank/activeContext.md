@@ -27,6 +27,9 @@ The project serves as a demonstration of Cline's capabilities while showcasing b
 - Integrated Kysely for type-safe database queries
 - Implemented Pino for logging
 - Added Swagger UI for API documentation
+- Replaced shell-based environment setup script with cross-platform TypeScript script
+- Renamed environment setup script from `setup:env` to `setup` for simplicity
+
 
 ## Next Steps
 

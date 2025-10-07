@@ -5,9 +5,6 @@ import { ErrorModel } from 'src/entities/models/error.model';
 import { ResponseModel } from 'src/entities/models/response.model';
 
 import { DataResponseStrategy } from './strategies/dataResponse.strategy';
-import { EmptyResponseStrategy } from './strategies/emptyResponse.strategy';
-import { ErrorResponseStrategy } from './strategies/errorResponse.strategy';
-import { MixedResponseStrategy } from './strategies/mixedResponse.strategy';
 
 export interface IResponseStrategy {
   getSchema(): ZodDiscriminatedUnion;
@@ -33,19 +30,7 @@ export class ResponseManager implements IResponseManager {
 }
 
 export class ResponseManagerBuilder {
-  static buildError(): ResponseManager {
-    return new ResponseManager(new ErrorResponseStrategy());
-  }
-
-  static buildEmpty(): ResponseManager {
-    return new ResponseManager(new EmptyResponseStrategy());
-  }
-
   static buildData(dataSchema: ZodObject<ZodRawShape>): ResponseManager {
     return new ResponseManager(new DataResponseStrategy(dataSchema));
-  }
-
-  static buildMixed(dataSchema: ZodObject<ZodRawShape>): ResponseManager {
-    return new ResponseManager(new MixedResponseStrategy(dataSchema));
   }
 }

@@ -36,8 +36,8 @@ export class ResponseModel {
         this.body = this.validateSuccessResponse(this.data, this.dataSchema);
         break;
       default:
-        this.statusCode = StatusCode.NO_CONTENT;
-        this.body = this.validateEmptyResponse(this.dataSchema);
+        this.statusCode = StatusCode.INTERNAL_SERVER_ERROR;
+        this.body = this.validateErrorResponse(ErrorModel.server({ message: 'Unkown Response' }), this.dataSchema);;
         break;
     }
   }
@@ -48,16 +48,6 @@ export class ResponseModel {
       statusCode: StatusCode.OK,
       statusMessage: StatusMessage.OK,
       data: data.toPlainObject(),
-    };
-
-    return (dataSchema ? dataSchema.parse(body) : body) as SuccessResponse;
-  }
-
-  private validateEmptyResponse(dataSchema?: ZodDiscriminatedUnion): SuccessResponse {
-    const body = {
-      success: true,
-      statusCode: StatusCode.NO_CONTENT,
-      statusMessage: StatusMessage.NO_CONTENT,
     };
 
     return (dataSchema ? dataSchema.parse(body) : body) as SuccessResponse;

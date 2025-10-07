@@ -32,7 +32,7 @@ After installation, you can verify:
 
 2. Generate the default `.env` file:
    ```bash
-   npm run environment
+   npm run setup
    ```
    This will create a `.env` file with default configuration values including:
    - NODE_ENV=development

@@ -13,6 +13,7 @@ import swaggerMeta from 'src/statics/swaggerMeta.static';
 import swaggerTemplate from 'src/templates/swagger.template';
 import { LoginUserV1Router } from 'src/controllers/loginUserV1/loginUser.router';
 import { LoginUserV1Docs } from 'src/controllers/loginUserV1/loginUser.docs';
+import { UserDMSchema } from 'src/entities/dms/user.dm';
 
 export class Server {
   private static readonly app: FastifyInstance = Fastify({ logger: false });
@@ -63,13 +64,14 @@ export class Server {
   }
 
   private static registerHooks(): void {
-    this.app.addHook('onRequest', async (request: FastifyRequest) => {
+    this.app.addHook('preHandler', async (request: FastifyRequest) => {
       this.logger.info('Incoming Request', {
         method: request.method,
         url: request.url,
         ip: request.ip,
         body: request.body ?? {},
         query: request.query ?? {},
+        params: request.params ?? {},
         path: request.params ?? {},
         userAgent: request.headers['user-agent'],
       });
@@ -86,6 +88,7 @@ export class Server {
 
   private static registerDocs(): void {
     new LoginUserV1Docs(this.manager).registerDocs();
+    this.manager.registerSchema({ schema: UserDMSchema, name: 'User Data Model' });
   }
 
   private static registerRoutes(): void {

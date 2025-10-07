@@ -1,4 +1,3 @@
-import { errors as joseErrors } from 'jose';
 import { ZodError } from 'zod';
 
 import { LoggerClient } from 'src/clients/logger/logger.client';
@@ -36,23 +35,8 @@ export class ErrorModel extends Error {
   static badRequest(options?: { message?: string }): ErrorModel {
     return this.generateInstanceAndLog(StatusCode.BAD_REQUEST, options?.message);
   }
-  static unauthorized(options?: { message?: string }): ErrorModel {
-    return this.generateInstanceAndLog(StatusCode.UNAUTHORIZED, options?.message);
-  }
-  static forbidden(options?: { message?: string }): ErrorModel {
-    return this.generateInstanceAndLog(StatusCode.FORBIDDEN, options?.message);
-  }
   static notFound(options?: { message?: string }): ErrorModel {
     return this.generateInstanceAndLog(StatusCode.NOT_FOUND, options?.message);
-  }
-  static conflict(options?: { message?: string }): ErrorModel {
-    return this.generateInstanceAndLog(StatusCode.CONFLICT, options?.message);
-  }
-  static unprocessable(options?: { message?: string }): ErrorModel {
-    return this.generateInstanceAndLog(StatusCode.UNPROCESSABLE_ENTITY, options?.message);
-  }
-  static locked(options?: { message?: string }): ErrorModel {
-    return this.generateInstanceAndLog(StatusCode.LOCKED, options?.message);
   }
   static server(options?: { message?: string }): ErrorModel {
     return this.generateInstanceAndLog(StatusCode.INTERNAL_SERVER_ERROR, options?.message);

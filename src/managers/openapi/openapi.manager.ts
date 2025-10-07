@@ -2,13 +2,8 @@ import { OpenAPIRegistry, RouteConfig } from '@asteasolutions/zod-to-openapi';
 import { ZodObject, ZodTransform, ZodPipe } from 'zod';
 
 import { BadRequestResponseDTOSchema } from 'src/entities/dtos/response/badRequest.response.dto';
-import { ConflictResponseDTOSchema } from 'src/entities/dtos/response/conflict.response.dto';
-import { ForbiddenResponseDTOSchema } from 'src/entities/dtos/response/forbidden.response.dto';
 import { InternalServerErrorResponseDTOSchema } from 'src/entities/dtos/response/internalServerError.response.dto';
-import { LockedResponseDTOSchema } from 'src/entities/dtos/response/locked.response.dto';
 import { NotFoundResponseDTOSchema } from 'src/entities/dtos/response/notFound.response.dto';
-import { UnauthorizedResponseDTOSchema } from 'src/entities/dtos/response/unauthorized.response.dto';
-import { UnprocessableEntityResponseDTOSchema } from 'src/entities/dtos/response/unprocessableEntity.response.dto';
 import { HttpSpecMethod } from 'src/entities/enums/methods.enum';
 import { StatusCode } from 'src/entities/enums/status.enum';
 
@@ -43,12 +38,7 @@ export interface IOpenApiManager {
 export class OpenApiManager implements IOpenApiManager {
   private readonly defaultErrorResponses: Record<number, LooseZodObject> = {
     [StatusCode.BAD_REQUEST]: BadRequestResponseDTOSchema,
-    [StatusCode.UNAUTHORIZED]: UnauthorizedResponseDTOSchema,
-    [StatusCode.FORBIDDEN]: ForbiddenResponseDTOSchema,
     [StatusCode.NOT_FOUND]: NotFoundResponseDTOSchema,
-    [StatusCode.CONFLICT]: ConflictResponseDTOSchema,
-    [StatusCode.UNPROCESSABLE_ENTITY]: UnprocessableEntityResponseDTOSchema,
-    [StatusCode.LOCKED]: LockedResponseDTOSchema,
     [StatusCode.INTERNAL_SERVER_ERROR]: InternalServerErrorResponseDTOSchema,
   };
 
