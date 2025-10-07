@@ -25,32 +25,29 @@ After installation, you can verify:
 
 ## Getting Started
 
-1. Clone the repository:
-   ```bash
-   git clone git@github.com:Belo-RenaruX/cline-demo-backend.git
-   cd cline-demo-backend
-   ```
-
-2. Install dependencies:
+1. Install dependencies:
    ```bash
    npm install
    ```
 
-3. Create a `.env` file in the root directory with the following content:
+2. Generate the default `.env` file:
+   ```bash
+   npm run generate:env
    ```
-   NODE_ENV=development
-   NODE_PORT=3000
-   LOG_LEVEL=DEBUG
-   DB_PATH=./database.sqlite
-   ```
+   This will create a `.env` file with default configuration values including:
+   - NODE_ENV=development
+   - NODE_PORT=3000
+   - LOG_LEVEL=DEBUG
+   - DB_PATH=./database.sqlite
+   - TZ=America/Lima
 
-4. Run database migrations:
+3. Run database migrations:
    ```bash
    npm run migrate
    ```
    This will create the SQLite database file and set up the required tables.
 
-5. Start the development server:
+4. Start the development server:
    ```bash
    npm run dev
    ```

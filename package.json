@@ -10,7 +10,8 @@
   },
   "scripts": {
     "local": "nodemon src/entrypoints/server.entrypoint.ts",
-    "migrate": "tsx src/entrypoints/migrate.entrypoint.ts"
+    "migrate": "tsx src/entrypoints/migrate.entrypoint.ts",
+    "generate:env": "./scripts/generate-env.sh"
   },
   "dependencies": {
     "@asteasolutions/zod-to-openapi": "^8.1.0",
