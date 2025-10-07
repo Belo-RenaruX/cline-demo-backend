@@ -49,7 +49,7 @@ After installation, you can verify:
 
 4. Start the development server:
    ```bash
-   npm run dev
+   npm run local
    ```
    The server will be available at http://localhost:3000.
 

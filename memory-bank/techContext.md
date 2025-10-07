@@ -70,7 +70,7 @@
 ### Setup Commands
 1. Install dependencies: `npm install`
 2. Run database migrations: `npm run migrate`
-3. Start development server: `npm run dev`
+3. Start development server: `npm run local`
 
 ## Technical Constraints
 

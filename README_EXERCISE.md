@@ -27,6 +27,8 @@ Based on the current project and using the cline rules + the existing memory ban
 
 A new endpoint that allows a new user to be registered into the database. This endpoint should have the same architectural pattern as the rest of the code. It should create the necessary DTOs for both input and output as well as validate the data based on that.
 
+Do not implement any type of encryption for this new endpoint.
+
 The DTOs should include the necessary information to create the swagger docs and also create the swagger docs config to show this new endpoint.
 
 Reuse the existing code as much as possible and only implement new code, do not modify existing code unless strictly necessary.
